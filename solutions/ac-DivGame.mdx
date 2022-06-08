@@ -82,4 +82,33 @@ ans += n > 1  # if n > 1 then it is a prime factor with e = 1
 print(ans)
 ```
 </PySection>
+<JavaSection>
+
+```java
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int ans = 0;
+        long n = sc.nextLong();
+        for (long i = 2; i * i <= n; i++) {
+            int exponent = 0;
+            while (n % i == 0) {
+                exponent++;
+                n /= i;
+            }
+            for (int p = 1; exponent - p >= 0; p++) {
+                exponent -= p;
+                ans++;
+            }
+        }
+        if (n > 1) {
+            ans++;
+        }
+        System.out.println(ans);
+    }
+}
+```
+</JavaSection>
 </LanguageSection>
